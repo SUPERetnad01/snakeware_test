@@ -2,5 +2,5 @@ A rest api that checks if a number is in the fibonacci sequence and if it is pri
 
 # run with docker
 
-docker build -t fibonacci-or-prime .
+docker build -t fibonacci-or-prime .<br />
 docker run -p 8080:8080 --name fibonacci-or-prime fibonacci-or-prime
