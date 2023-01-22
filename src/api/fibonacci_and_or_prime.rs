@@ -1,7 +1,7 @@
 use crate::calculations::{fibonacci::is_in_fibonacci_sequence, prime::is_prime};
 use actix_web::{get, web::Path, HttpResponse};
-
 use serde::Serialize;
+
 #[derive(Debug, Serialize)]
 struct FibonacciOrPrimeResult {
     is_in_fibonacci: bool,
@@ -12,7 +12,8 @@ struct FibonacciOrPrimeResult {
 #[get("/{number}")]
 pub async fn check_fibonacci_and_or_prime(path: Path<u64>) -> HttpResponse {
     let input_number = path.into_inner();
-    let is_in_fibonacci = match is_in_fibonacci_sequence(input_number.clone(), None) {
+
+    let is_in_fibonacci = match is_in_fibonacci_sequence(input_number, None) {
         Ok(r) => r,
         Err(err) => return HttpResponse::BadRequest().body(err),
     };
